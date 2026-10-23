@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vườn Ươm Tri Thức Lớp 4A2 - Sổ Tay Chủ Nhiệm Điện Tử</title>
+    <meta name="description" content="Hệ thống thi đua Vườn Ươm Tri Thức Lớp 4A2, quản lý học sinh, điểm danh, đổi sao, tích hợp Tone.js, SheetJS, html2pdf và Cloud/Local kép." />
+    
+    <!-- Google Fonts: Quicksand (Rounded Modern Typography) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Firebase SDK (Safely loaded for optional cloud sync) -->
+    <script type="module">
+      (async () => {
+        try {
+          const { initializeApp } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js");
+          const { getFirestore, doc, setDoc, getDoc, onSnapshot } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js");
+          window.FirebaseSDK = { initializeApp, getFirestore, doc, setDoc, getDoc, onSnapshot };
+        } catch (e) {
+          console.warn("Firebase SDK load skipped or unavailable offline:", e);
+        }
+      })();
+    </script>
+  </head>
+  <body class="font-sans antialiased bg-slate-100 text-slate-900">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

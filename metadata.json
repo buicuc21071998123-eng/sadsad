@@ -1,0 +1,10 @@
+{
+  "name": "LỚP HỌC HẠNH PHÚC CÔ CÚC ",
+  "description": "Ứng dụng chuyên nghiệp dành cho giáo viên chủ nhiệm: quản lý học sinh, điểm danh chuyên cần, vườn hoa thi đua tích điểm, đổi quà vinh danh và bộ công cụ hỗ trợ giảng dạy trực quan.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

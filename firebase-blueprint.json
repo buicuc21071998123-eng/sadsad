@@ -1,0 +1,143 @@
+{
+  "entities": {
+    "Student": {
+      "title": "Student",
+      "description": "Thông tin hồ sơ học sinh, điểm hoa, tổ thi đua và mã bảo mật",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Mã định danh duy nhất của học sinh"
+        },
+        "stt": {
+          "type": "number",
+          "description": "Số thứ tự trong danh sách lớp"
+        },
+        "name": {
+          "type": "string",
+          "description": "Họ và tên học sinh"
+        },
+        "gender": {
+          "type": "string",
+          "enum": ["nam", "nu"],
+          "description": "Giới tính"
+        },
+        "group": {
+          "type": "number",
+          "description": "Tổ thi đua (1-4)"
+        },
+        "role": {
+          "type": "string",
+          "description": "Chức vụ trong lớp"
+        },
+        "flowerPoints": {
+          "type": "number",
+          "description": "Số hoa điểm tốt tích lũy"
+        },
+        "lifetimePoints": {
+          "type": "number",
+          "description": "Tổng hoa đạt được trọn đời"
+        },
+        "securityCode": {
+          "type": "string",
+          "description": "Mã tra cứu bảo mật 5 số"
+        },
+        "birthday": {
+          "type": "string",
+          "description": "Ngày sinh"
+        },
+        "parentPhone": {
+          "type": "string",
+          "description": "Số điện thoại phụ huynh"
+        },
+        "personalTarget": {
+          "type": "string",
+          "description": "Mục tiêu cá nhân"
+        },
+        "talents": {
+          "type": "string",
+          "description": "Sở trường và năng khiếu"
+        },
+        "avatarUrl": {
+          "type": "string",
+          "description": "Ảnh đại diện của học sinh"
+        },
+        "shields": {
+          "type": "number",
+          "description": "Số khiên bảo vệ"
+        },
+        "bloomedGardens": {
+          "type": "array",
+          "description": "Danh sách các vườn hoa đã nở rộ"
+        }
+      },
+      "required": ["id", "stt", "name", "group", "flowerPoints"]
+    },
+    "UserClassroom": {
+      "title": "UserClassroom",
+      "description": "Dữ liệu sổ tay lớp học của giáo viên (cấu hình, điểm danh, tiêu chí, phần thưởng, ghi chú, bài tập)",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Google Auth UID của giáo viên"
+        },
+        "config": {
+          "type": "object",
+          "description": "Cài đặt thông tin lớp học, tên cô giáo, tiêu chí, năm học"
+        },
+        "attendance": {
+          "type": "object",
+          "description": "Bản ghi điểm danh của ngày hiện tại"
+        },
+        "attendanceHistory": {
+          "type": "array",
+          "description": "Lịch sử điểm danh các ngày học trước"
+        },
+        "pointLogs": {
+          "type": "array",
+          "description": "Nhật ký lịch sử cộng điểm, trừ điểm học sinh"
+        },
+        "rewards": {
+          "type": "array",
+          "description": "Danh mục quà tặng và cửa hàng đổi thưởng"
+        },
+        "redemptions": {
+          "type": "array",
+          "description": "Lịch sử các lần học sinh đổi thưởng"
+        },
+        "teacherNotes": {
+          "type": "array",
+          "description": "Ghi chú theo dõi học sinh của giáo viên"
+        },
+        "criteria": {
+          "type": "array",
+          "description": "Bộ tiêu chí thi đua hoa điểm tốt"
+        },
+        "assignments": {
+          "type": "array",
+          "description": "Danh sách bài tập và nhiệm vụ được giao"
+        },
+        "lastUpdated": {
+          "type": "number",
+          "description": "Timestamp thời điểm cập nhật mới nhất"
+        },
+        "version": {
+          "type": "string",
+          "description": "Phiên bản cấu trúc dữ liệu"
+        }
+      },
+      "required": ["userId", "config", "lastUpdated"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/students/{studentId}": {
+      "schema": "Student",
+      "description": "Danh sách hồ sơ từng học sinh trong lớp thuộc tài khoản giáo viên"
+    },
+    "/users/{userId}/classroom/data": {
+      "schema": "UserClassroom",
+      "description": "Dữ liệu cấu hình, điểm danh, nhật ký và tiện ích lớp học riêng của giáo viên"
+    }
+  }
+}
